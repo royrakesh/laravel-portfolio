@@ -1,0 +1,1 @@
+ <link rel="icon" type="image/jpg" href="<?php echo e(asset('assets/img/1.ico')); ?>" /> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title>Portfolio <?php echo $__env->yieldContent('title'); ?></title> <link rel="stylesheet" type="text/css" href="<?php echo e(mix('assets/css/app.css')); ?>" /> <?php echo $__env->yieldContent('stylesheet'); ?> 
