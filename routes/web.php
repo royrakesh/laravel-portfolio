@@ -20,4 +20,4 @@ Route::get('/contact', function () {
 });
 
 
-Route::resource('portfolios' , 'PortfolioController');
+Route::resource('portfolios' , 'PortfolioController'); 

@@ -9,7 +9,10 @@
     
 		@include('partials._nav')
 
-        <div class="container">		
+        <div class="container">	
+
+			@include('partials._messages')
+
             @yield('content')
 		</div> <!-- .container end  -->
 		

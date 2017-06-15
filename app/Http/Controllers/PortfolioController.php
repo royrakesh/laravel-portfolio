@@ -57,6 +57,7 @@ class PortfolioController extends Controller
         $portfolio->save();
 
         Session :: flash('success','Portfolio Successfully created');
+        
         // Redirect
 
         return redirect()->route('portfolios.show' , $portfolio->id);
@@ -75,7 +76,10 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-        return view('portfolios.show');
+        $portfolio = Portfolio::find($id);
+
+        return view('portfolios.show')->withPortfolio($portfolio);
+
     }
 
     /**
