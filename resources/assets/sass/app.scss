@@ -8,9 +8,30 @@
 @import'variables';
 
 
+label{
+	    margin-top: 10px;
+}
+
+.form-spacing-top{
+	margin-top: 20px;
+}
+
+.navcol a.active, .navcol a:hover , .navcol a:focus {
+    background-color: $linkhover;
+}
+
+.btn-top-margin{
+	margin-top: 20px !important;
+}
+
 .container{
 	margin-top: 30px;
 }
+
+div#slider {
+    margin: 0px auto 30px;
+}
+
  .readmore {
 
 	display: block;
@@ -118,7 +139,7 @@ img.gridimage {
 
 }
 
-.gridtitle {
+a.gridtitle {
 
 	-webkit-align-items: center;
 
@@ -161,6 +182,14 @@ img.gridimage {
 	margin-bottom: 2px;
 
 	margin-top: 2px;
+	
+	font-size: 28px;
+	
+		&:hover {
+			text-decoration: none;
+			color:#03A9F4;
+			
+			}
 
 }
 
@@ -629,6 +658,9 @@ a.button-link {
 	transition-property: max-height, box-shadow;
 
 }
+
+
+
 
 ::selection {
 

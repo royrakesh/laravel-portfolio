@@ -16,6 +16,10 @@ class PortfolioController extends Controller
     public function index()
     {
         //
+
+        $portfolios = Portfolio::orderBy('id', 'desc')->paginate(4);
+
+        return view('portfolios.index')->withPortfolios($portfolios);
     }
 
     /**
@@ -44,6 +48,7 @@ class PortfolioController extends Controller
         $this->validate($request , array(
 
             'title' => 'required | max:255',
+            'slug'  => 'required |alpha_dash |  min:5 | max::255',
             'body'  => 'required'
         ));
 
@@ -52,6 +57,7 @@ class PortfolioController extends Controller
         $portfolio = new Portfolio;
 
         $portfolio->title = $request->title;
+        $portfolio->slug   = $request->slug;
         $portfolio->body = $request->body;
 
         $portfolio->save();
@@ -91,6 +97,10 @@ class PortfolioController extends Controller
     public function edit($id)
     {
         //
+
+       $portfolio = Portfolio::find($id);
+
+        return view('portfolios.edit')->withPortfolio($portfolio);
     }
 
     /**
@@ -103,6 +113,33 @@ class PortfolioController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
+         // Validate data
+
+        $this->validate($request , array(
+
+            'title' => 'required | max:255',
+            'body'  => 'required'
+        ));
+
+        // Store data
+
+        $portfolio = Portfolio::find($id);
+
+        $portfolio->title = $request->input('title');
+        $portfolio->body = $request->input('body');
+
+        $portfolio->save();
+
+        Session :: flash('success','Portfolio Successfully Updated');
+        
+        // Redirect
+
+        return redirect()->route('portfolios.show' , $portfolio->id);
+
+
+
     }
 
     /**
@@ -113,6 +150,15 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $portfolio = Portfolio::find($id);
+
+        $portfolio->delete();
+
+        Session :: flash('success','Portfolio Successfully Deleted :( ');
+        
+
+        return redirect()->route('portfolios.index');
+
     }
 }

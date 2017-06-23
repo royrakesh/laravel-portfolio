@@ -23,6 +23,9 @@
                 {{ Form::label('title', 'Title') }}
                 {{Form::text('title',null , array('class' => 'form-control',' placeholder'=> 'Enter The Title' , 'required' => '', 'maxlength' => '100')) }}
 
+                {{ Form::label('slug', 'Slug') }}
+                {{Form::text('slug',null , array('class' => 'form-control',' placeholder'=> 'Enter The Slug' , 'required' => '', 'minlength'=>'5', 'maxlength' => '100')) }}
+
                 {{ Form::label('body', 'Body') }}
                 {{Form::textarea('body', null , array('class' => 'form-control', ' placeholder' => 'Enter your little story',  'required' => '')) }}
 
@@ -49,7 +52,7 @@
 
 @section('scripts')
 
-        {!! Html::script('assets/js/parsley.min.js')!!}
+       <script type="text/javascript" src="{{ mix('assets/js/parsley.min.js') }}"></script> 
 
 @endsection
 

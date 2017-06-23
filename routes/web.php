@@ -11,13 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome');
-});
-
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
-
-
+Route::get('/', 'PagesController@getIndex');
+Route::get('/contact', 'PagesController@getContact');
+Route::get('/about', 'PagesController@getAbout');
 Route::resource('portfolios' , 'PortfolioController'); 

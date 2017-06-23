@@ -10,11 +10,15 @@
 			</div>
 			<div class="header-row" id="navrow">
 				<div class="navcol">
-					<a href="/" title="">Home</a>
-					<a href="" title="">About</a>
-					<a href="/contact" title="">Contact</a>
+					<a class="{{ Request::is('/') ? "active" : "" }}" href="/" title="">Home</a>
+					<a class="{{ Request::is('about') ? "active" : "" }}" href="/about" title="">About</a>
+					<a class="{{ Request::is('contact') ? "active" : "" }}" href="/contact" title="">Contact</a>
+					
+					<a class="{{ Request::is('portfolios') ? "active" : "" }}" href="{{route('portfolios.index')}}" title="">Portfolios</a>
 				</div>
 			</div>
 			
 		</div>
 		<!-- Header End -->
+
+		

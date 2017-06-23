@@ -33,46 +33,26 @@
 
 
 		<div class="section-center mdl-grid" id="grid">
+
+		@foreach($portfolios as $portfolio)
+
+			<div class="col-xs-12 col-md-3 grid-4-shadow cell-3">
+				<img class="gridimage" src="assets/img/grid1.jpg" alt="">
+					<a href="{{route('portfolios.show' , $portfolio->id )}}" class="gridtitle">{{ $portfolio->title}}</a>
+						<div class="gridtext">
+							{{  substr($portfolio->body , 0 ,150)}}
+							{{  strlen($portfolio->body) > 150 ? "..." : "" }}
+						</div>
+			</div>
+
+
+
+		@endforeach
 			
-			<div class="col-xs-12 col-md-3 grid-4-shadow cell-3">
-			<img class="gridimage" src="assets/img/grid1.jpg" alt="">
-			<h2 class="gridtitle">My Title</h2>
-			<div class="gridtext">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation
-			</div>
-			</div>
-			<div class="col-xs-12 col-md-3 grid-4-shadow cell-3">
-			<img class="gridimage" src="assets/img/grid1.jpg" alt="">
-			<h2 class="gridtitle">My Title</h2>
-			<div class="gridtext">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation
-			</div>
-			</div>
-			<div class="col-xs-12 col-md-3 grid-4-shadow cell-3">
-			<img class="gridimage" src="assets/img/grid1.jpg" alt="">
-			<h2 class="gridtitle">My Title</h2>
-			<div class="gridtext">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation 
-			</div>
-			</div>
-			<div class="col-xs-12 col-md-3 grid-4-shadow cell-3">
-			<img class="gridimage" src="assets/img/grid1.jpg" alt="">
-			<h2 class="gridtitle">My Title</h2>
-			<div class="gridtext">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation
-			</div>
-			</div>
+		
 
 
-			<div class="readmore"><a  href="#" class="btn readmorebtn">Read All</a>	</div>
+			<div class="readmore"><a  href="{{route('portfolios.index')}}" class="btn readmorebtn">Read All</a>	</div>
 			
 
 		</div>
