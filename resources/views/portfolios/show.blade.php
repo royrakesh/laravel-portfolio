@@ -15,20 +15,20 @@
                 <div class="well">
 
                         <dl class="dl-horizontal">
-                                <dt>URL: </dt>
-                                <dd><a href="{{ url('$portfolio->slug') }}">{{ url('$portfolio->slug') }}</a></dd>
+                                <label>URL: </label>
+                                <span><a href="{{ route('blog.single',$portfolio->slug) }}">{{ route('blog.single',$portfolio->slug) }}</a></span>
                         </dl>
 
 
 
                         <dl class="dl-horizontal">
-                                <dt>Created At:</dt>
-                                <dd>{{ date('jS M , Y h:ia' , strtotime($portfolio->created_at)) }}</dd>
+                                <label>Created At:</label>
+                                <span>{{ date('jS M , Y h:ia' , strtotime($portfolio->created_at)) }}</span>
                         </dl>
 
                         <dl class="dl-horizontal">
-                                <dt>Last Updated:</dt>
-                               <dd>{{ date('jS M , Y h:ia' , strtotime($portfolio->updated_at)) }}</dd>
+                                <label>Last Updated:</label>
+                               <span>{{ date('jS M , Y h:ia' , strtotime($portfolio->updated_at)) }}</span>
                         </dl>
 
                         <hr>

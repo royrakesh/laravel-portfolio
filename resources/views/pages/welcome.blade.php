@@ -38,7 +38,7 @@
 
 			<div class="col-xs-12 col-md-3 grid-4-shadow cell-3">
 				<img class="gridimage" src="assets/img/grid1.jpg" alt="">
-					<a href="{{route('portfolios.show' , $portfolio->id )}}" class="gridtitle">{{ $portfolio->title}}</a>
+					<a href="{{ url('/blog/'. $portfolio->slug)}}" class="gridtitle">{{ $portfolio->title}}</a>
 						<div class="gridtext">
 							{{  substr($portfolio->body , 0 ,150)}}
 							{{  strlen($portfolio->body) > 150 ? "..." : "" }}

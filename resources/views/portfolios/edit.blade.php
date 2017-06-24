@@ -14,6 +14,9 @@
                   {{ Form::text('title', null , array('class' => 'form-control input-lg form-spacing-top')) }}
 
 
+                  {{ Form::label('slug' , 'Slug', ['class' => 'form-spacing-top']) }}
+                  {{ Form::text('slug', null , ['class' => 'form-control'])}}
+
                    {{Form::label('body' , 'Body' , array('class' => 'form-spacing-top' ))}}
                   {{ Form::textarea('body', null , array('class'=> 'form-control')) }}
          

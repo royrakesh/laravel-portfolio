@@ -47,8 +47,8 @@ class PortfolioController extends Controller
 
         $this->validate($request , array(
 
-            'title' => 'required | max:255',
-            'slug'  => 'required |alpha_dash |  min:5 | max::255',
+            'title' => 'required|max:255',
+            'slug'  => 'required|alpha_dash|min:5|max:255|unique:portfolios,slug',
             'body'  => 'required'
         ));
 
@@ -56,9 +56,9 @@ class PortfolioController extends Controller
 
         $portfolio = new Portfolio;
 
-        $portfolio->title = $request->title;
+        $portfolio->title  = $request->title;
         $portfolio->slug   = $request->slug;
-        $portfolio->body = $request->body;
+        $portfolio->body   = $request->body;
 
         $portfolio->save();
 
@@ -116,18 +116,33 @@ class PortfolioController extends Controller
 
 
          // Validate data
+         $portfolio = Portfolio::find($id);
 
-        $this->validate($request , array(
+       if($request->input('slug') == $portfolio->slug ){
+
+            $this->validate($request , array(
 
             'title' => 'required | max:255',
             'body'  => 'required'
         ));
+           
+       }else{
+           
+        $this->validate($request , array(
+
+            'title' => 'required | max:255',
+            'slug'  => 'required |alpha_dash |  min:5 | max:255',
+            'body'  => 'required'
+        ));
+
+       }
 
         // Store data
 
         $portfolio = Portfolio::find($id);
 
         $portfolio->title = $request->input('title');
+        $portfolio->slug  = $request->input('slug');
         $portfolio->body = $request->input('body');
 
         $portfolio->save();

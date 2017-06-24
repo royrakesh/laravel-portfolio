@@ -30,16 +30,7 @@
                 {{Form::textarea('body', null , array('class' => 'form-control', ' placeholder' => 'Enter your little story',  'required' => '')) }}
 
 
-                {{ Form::label('phoneno', 'Phone no')}}
-                {{ Form::text('phoneno' , '123' , array('class' => 'form-control' , 'required' => '') )}}
-
-{{-- 
-                {{Form::label('imageurl', 'Upload your image')}}
-                {{Form::file('imageurl', null , array('class' => 'form-control'))}}
-
- --}}
-
-                {{Form::submit('Create new Portfolio', array('class' => 'btn btn-info btn-lg btn-block' , 'style'=> 'margin-top:20px;')) }}
+              {{Form::submit('Create new Portfolio', array('class' => 'btn btn-info btn-lg btn-block' , 'style'=> 'margin-top:20px;')) }}
 
 
             {!! Form::close() !!}
