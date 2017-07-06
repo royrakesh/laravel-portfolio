@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Portfolio;
+use App\Category;
+use App\Tag;
 use Session;
 
 class PortfolioController extends Controller
-{
+{   
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -29,8 +39,9 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-
-        return view('portfolios.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('portfolios.create')->withCategories($categories)->withTags($tags);
 
     }
 
@@ -45,10 +56,13 @@ class PortfolioController extends Controller
         
         // Validate data
 
+      
+
         $this->validate($request , array(
 
             'title' => 'required|max:255',
             'slug'  => 'required|alpha_dash|min:5|max:255|unique:portfolios,slug',
+            'category_id' => 'required|integer',
             'body'  => 'required'
         ));
 
@@ -56,11 +70,16 @@ class PortfolioController extends Controller
 
         $portfolio = new Portfolio;
 
-        $portfolio->title  = $request->title;
-        $portfolio->slug   = $request->slug;
-        $portfolio->body   = $request->body;
+        $portfolio->title       =   $request->title;
+        $portfolio->slug        =   $request->slug;
+        $portfolio->category_id =   $request->category_id;
+        $portfolio->body        =   $request->body;
 
         $portfolio->save();
+
+
+        $portfolio->tags()->sync($request->tags , false);
+        
 
         Session :: flash('success','Portfolio Successfully created');
         
@@ -99,8 +118,25 @@ class PortfolioController extends Controller
         //
 
        $portfolio = Portfolio::find($id);
+       $categories = Category::all();
+       $cats = array();
+       
+       foreach($categories as $category){
 
-        return view('portfolios.edit')->withPortfolio($portfolio);
+        $cats[$category->id] = $category->name;
+
+       }
+
+
+       $tags = Tag::all();
+       $tags2 = array();
+       foreach ($tags as $tag) {
+
+       $tags2[$tag->id] = $tag->name;
+            
+       }
+
+        return view('portfolios.edit')->withPortfolio($portfolio)->withCategories($cats)->withTags($tags2);
     }
 
     /**
@@ -132,6 +168,7 @@ class PortfolioController extends Controller
 
             'title' => 'required | max:255',
             'slug'  => 'required |alpha_dash |  min:5 | max:255',
+            'category_id' => 'required|integer',
             'body'  => 'required'
         ));
 
@@ -143,10 +180,21 @@ class PortfolioController extends Controller
 
         $portfolio->title = $request->input('title');
         $portfolio->slug  = $request->input('slug');
+        $portfolio->category_id = $request->input('category_id');
         $portfolio->body = $request->input('body');
 
         $portfolio->save();
+        
+        // Sync Tag with Portfolio id and yag id
+        
+        if(isset($request->tags)){
+        $portfolio->tags()->sync($request->tags);
 
+        }else{
+            $portfolio->tags()->sync(array());
+
+        }
+      
         Session :: flash('success','Portfolio Successfully Updated');
         
         // Redirect
@@ -168,6 +216,8 @@ class PortfolioController extends Controller
         
         $portfolio = Portfolio::find($id);
 
+        $portfolio->tags()->detach();
+
         $portfolio->delete();
 
         Session :: flash('success','Portfolio Successfully Deleted :( ');
@@ -176,4 +226,7 @@ class PortfolioController extends Controller
         return redirect()->route('portfolios.index');
 
     }
+
+
+
 }

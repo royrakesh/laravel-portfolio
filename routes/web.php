@@ -12,9 +12,27 @@
 */
 
 
+
+
 Route::get('/blog/{slug}', 'BlogController@getSingle')->name('blog.single')->where('slug' , '[\w\d\-\_]+');
 Route::get('blog', 'BlogController@getIndex')->name('blog.index');
 Route::get('/', 'PagesController@getIndex');
 Route::get('/contact', 'PagesController@getContact');
 Route::get('/about', 'PagesController@getAbout');
-Route::resource('portfolios' , 'PortfolioController'); 
+
+// Portfolios
+
+Route::resource('portfolios' , 'PortfolioController');
+
+// Categories
+
+Route::resource('categories', 'CategoryController' , ['except' => ['create'] ] );
+
+
+Route::resource('tags', 'TagController' , ['except' => ['create'] ] );
+
+
+Auth::routes();
+
+
+

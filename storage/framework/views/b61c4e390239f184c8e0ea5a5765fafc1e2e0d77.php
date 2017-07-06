@@ -1,2 +1,0 @@
- <?php $__env->startSection('title', '| Contact Us'); ?> <?php $__env->startSection('content'); ?> <form action="" method="POST" role="form"> <legend>Contact Us</legend> <div class="form-group"> <label for="">Name</label> <input type="text" class="form-control" id="" placeholder="Input field"> </div> <button type="submit" class="btn btn-primary">Submit</button> </form> <?php $__env->stopSection(); ?>
-<?php echo $__env->make('main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

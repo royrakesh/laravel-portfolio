@@ -1,1 +1,1 @@
- <script type="text/javascript" src="<?php echo e(mix('assets/js/app.js')); ?>"></script> <?php echo $__env->yieldContent('scripts'); ?>
+ <script type="text/javascript" src="<?php echo e(mix('assets/js/app.js')); ?>"></script> 

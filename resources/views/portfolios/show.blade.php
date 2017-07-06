@@ -7,6 +7,18 @@
         <div class="col-md-8">
                 <h1>{{ $portfolio->title }}</h1>
                 <p class="lead">{{ $portfolio->body }}</p>
+                <hr>
+
+                <div class="tags">
+                @foreach ($portfolio->tags as $tag)
+                
+                    <span class="badge">{{$tag->name}}</span>
+
+                @endforeach
+
+
+                </div>
+                
         </div>
 
 
@@ -29,6 +41,11 @@
                         <dl class="dl-horizontal">
                                 <label>Last Updated:</label>
                                <span>{{ date('jS M , Y h:ia' , strtotime($portfolio->updated_at)) }}</span>
+                        </dl>
+
+                         <dl class="dl-horizontal">
+                                <label>Category: </label>
+                               <span>{{ $portfolio->category->name }}</span>
                         </dl>
 
                         <hr>

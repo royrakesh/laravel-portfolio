@@ -8,6 +8,76 @@
 @import'variables';
 
 
+
+
+
+/* Navbar*/
+.count-badge {
+    background: #5cb85c;
+}
+
+.btn-half{
+width: 70%;
+text-align: center;
+margin: 0 auto;
+display: block;
+}
+.btn-top{
+	margin-top:20px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: $theme-color;
+}
+
+
+.icon-bar {
+    background-color: $white;
+}
+.navbar-toggle {
+
+    background-color:$theme-color-dark;
+}
+
+nav.mainnav {
+    background:$theme-color-dark;
+    border: none;
+    color: $white;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+
+.nav.mainnav {
+    color: #777;
+}
+
+
+.navbar-default .navbar-nav > li > a {
+	color: $white;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: $white !important;
+    background-color: $linkhover !important;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color:$white;
+    background-color:  $linkhover !important;
+}
+
+ul.nav.navbar-nav li {
+    margin: 2px 5px;
+}
+
+
+
+
+
 div#imgbox img {
     margin: 0 auto;
 }
@@ -20,9 +90,7 @@ label{
 	margin-top: 20px;
 }
 
-.navcol a.active, .navcol a:hover , .navcol a:focus {
-    background-color: $linkhover;
-}
+
 
 .btn-top-margin{
 	margin-top: 20px !important;
@@ -477,49 +545,6 @@ a.button-link {
 }
 
 
-.navcol {
-
-	text-align: center;
-
-	max-width: 900px;
-
-	width: 100%;
-
-	a {
-
-		color: $white;
-
-		text-decoration: none;
-
-		text-transform: uppercase;
-
-		padding: 5px 24px;
-
-		display: inline-block;
-
-		opacity: 0.8;
-
-		font-weight: 600;
-
-		outline: none;
-
-		&:hover {
-
-			opacity: 1;
-
-			background: #6277e7;
-
-		}
-
-	}
-
-}
-
-#navrow {
-
-	background-color: $theme-color-dark;
-
-}
 
 .site-logo {
 

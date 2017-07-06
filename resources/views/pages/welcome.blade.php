@@ -52,7 +52,7 @@
 		
 
 
-			<div class="readmore"><a  href="{{route('portfolios.index')}}" class="btn readmorebtn">Read All</a>	</div>
+			<div class="readmore"><a  href="{{route('blog.index')}}" class="btn readmorebtn">Read All</a>	</div>
 			
 
 		</div>

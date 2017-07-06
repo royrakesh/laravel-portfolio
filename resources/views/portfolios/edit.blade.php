@@ -2,6 +2,14 @@
 
 @section('title' , 'Edit the Portfolio')
 
+@section('stylesheet')
+
+<link rel="stylesheet" type="text/css" href="{{mix('assets/css/parsley.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{mix('assets/css/select2.min.css')}}" />
+
+@endsection
+
+
 @section('content')
 
 
@@ -17,7 +25,20 @@
                   {{ Form::label('slug' , 'Slug', ['class' => 'form-spacing-top']) }}
                   {{ Form::text('slug', null , ['class' => 'form-control'])}}
 
-                   {{Form::label('body' , 'Body' , array('class' => 'form-spacing-top' ))}}
+
+                  {{ Form::label('category_id' , 'Category:')}}
+                  {{ Form::select('category_id', $categories , null , ['class' => 'form-control']) }}
+
+                  
+                  {{ Form::label('tags' , 'Tags:') }}
+                  {{ Form::select('tags[]', $tags , null , ['class' => 'select2-multi form-control' , 'multiple' => 'multiple']) }}
+
+
+       
+
+
+
+                  {{Form::label('body' , 'Body' , array('class' => 'form-spacing-top' ))}}
                   {{ Form::textarea('body', null , array('class'=> 'form-control')) }}
          
                
@@ -59,8 +80,19 @@
 
 </div>   <!-- end of .row (form) -->
 
+@endsection
 
 
+
+@section('scripts')
+
+       <script type="text/javascript" src="{{ asset('assets/js/select2.full.js')}}"></script> 
+
+       <script type="text/javascript">
+           
+           $('.select2-multi').select2();
+
+       </script>
 
 @endsection
 

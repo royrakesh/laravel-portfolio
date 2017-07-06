@@ -1,2 +1,0 @@
- <?php $__env->startSection('title', "| $portfolios->title "); ?> <?php $__env->startSection('content'); ?> <div class="row"> <div class="col-md-8 col-md-offset-2"> <div id="imgbox"><img src="<?php echo e(asset($portfolios->imageurl)); ?>" class="img-responsive" alt=""></div> <h1><?php echo e($portfolios->title); ?></h1> <span><?php echo e($portfolios->body); ?></span> </div> </div> <?php $__env->stopSection(); ?>
-<?php echo $__env->make('main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
